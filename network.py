@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sat Nov 14 01:18:04 2020
+Main script for program.
+FILL IN LATER
 
 @author: mlazo
 """
@@ -35,6 +37,7 @@ num         = 5000      # number of predictions to make
 def normalize(a):
     '''
     Normalize an array of values to [0, 1].
+    Used to prepare data for use with Tensorflow.
 
     Parameters
     ----------
