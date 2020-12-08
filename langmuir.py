@@ -17,6 +17,7 @@ def A_sheath(t, m, b):
     return m*t + b
 
 def Ii(tt, n, Te, m, b):
+    
     J_s = Jsat(n, Te)
     A_s = A_sheath(tt, m, b)
     return J_s * A_s
