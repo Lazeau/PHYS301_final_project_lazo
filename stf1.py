@@ -24,10 +24,10 @@ def read_data(file):
     file : int
         Integer selection of one of several pre-processed data files.
         Current available input : data file:
-            1 : Jan. 16, 2019
-            2 : Feb. 26, 2019
-            3 : Apr. 05, 2019
-            4 : Apr. 19, 2019
+            0 : Jan. 16, 2019
+            1 : Feb. 26, 2019
+            2 : Apr. 05, 2019
+            3 : Apr. 19, 2019
     
     Returns
     -------
@@ -44,7 +44,6 @@ def read_data(file):
     traces : int
         Number of probe traces in file.
     '''
-    # TODO: Add file selector in GUI    
     datasets = ["2019-01-18-14-55-59-SPW-lp-tlm-t",
                 "2019_02_27_09_01_30_lp_tlm",
                 "2019_04_12_06_01_34_lp_tlm",
@@ -165,31 +164,37 @@ def analyze_data(vv, ii, traces):
           '\nNumber of unchar. densities.:', len(very_high_ni))
     
     ## For testing
-    fig = plt.figure()
-    n = 2 # 50 in set 1 is interesting
-    plt.plot(vv[n], ii[n], '.', label='total')
-    plt.plot(vv[n], I_i[n], '.', label='ion')
-    plt.plot(vv[n], I_e[n], '.', label='electron')
-    plt.plot(V_f[n], I_isat[n], 'o', color='r')
+    # fig = plt.figure(figsize=(5,4), dpi=144)
+    # n = 50 # 50 in set 1 is interesting
+    # plt.plot(vv[n], ii[n], label='total')
+    # plt.plot(vv[n], I_i[n], label='ion')
+    # plt.plot(vv[n], I_e[n], label='electron')
+    # plt.xlabel('Bias (V)')
+    # plt.ylabel('Current (A)')
+    # plt.grid(True)
+    # plt.legend()
+    # plt.plot(V_f[n], I_isat[n], 'o', color='r')
     
     return T_e, I_isat, n_i, V_f, Ii_m, Ii_b
 
 ## For testing
-cdsec,vv,ii,traces = read_data(0)
-T_e,I_is,n_i,V_f,Ii_m,Ii_b = analyze_data(vv, ii, traces)
+# cdsec,vv,ii,traces = read_data(0)
+# T_e,I_is,n_i,V_f,Ii_m,Ii_b = analyze_data(vv, ii, traces)
 
-fig2,axes = plt.subplots(2,1, figsize=(8,4.5), dpi=144)
-axes[0].plot(cdsec, T_e)
-axes[1].plot(cdsec, n_i)
-axes[0].set_ylabel('Electron Temp. (eV)')
-axes[1].set_ylabel('Ion Density (m^-3')
-axes[1].set_xlabel('CCSDS Time (s)')
+# fig2,axes = plt.subplots(2,1, figsize=(8,4.5), dpi=144)
+# axes[0].plot(cdsec, T_e)
+# axes[1].plot(cdsec, n_i)
+# axes[0].set_ylabel('Electron Temp. (eV)')
+# axes[1].set_ylabel('Ion Density (m^-3')
+# axes[1].set_xlabel('CCSDS Time (s)')
 
-print('sample Te, Is:', T_e[50], I_is[50])
-print('sample ni:', n_i[50])
-print('sample beta_m, beta_b:', Ii_m[50],Ii_b[50])
+# print('sample Te, Is:', T_e[50], I_is[50])
+# print('sample ni:', n_i[50])
+# print('sample beta_m, beta_b:', Ii_m[50],Ii_b[50])
 
-plt.tight_layout()
+# plt.tight_layout()
+
+# print(V_f[50])
 
 # fig3 = plt.figure()
 # plt.plot(vv[2])
