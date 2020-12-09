@@ -87,6 +87,7 @@ real_cur = normalize(real_cur)
 real_Te_norm = normalize(r_labels[:,0])
 real_Is_norm = normalize(r_labels[:,1])
 
+print('________')
 print('\nReal data shapes:\nTimestamps: {}\nVoltage: {}\nCurrent: {}\n'.format(cdsec.shape, real_vol.shape, real_cur.shape))
 print('Traces: {}\nData window: {}\n'.format(real_traces, window))
 # print('Real labels: {}\nNormalized labels:\n{}\n{}'.format(r_labels, real_Te_norm, real_Is_norm))
@@ -99,7 +100,7 @@ voltage_r = tf.convert_to_tensor(real_vol[:real_traces, None])
 current_r = tf.convert_to_tensor(real_cur[:real_traces, None])
 data_r = tf.concat([voltage_r, current_r], 1)
 print('Real tensor shapes:\nLabels: {}\nData: {}\n'.format(label_r.shape, data_r.shape))
-
+print('________\n')
 real_set = tf.data.Dataset.from_tensor_slices((data_r, label_r))
 
 
@@ -141,6 +142,7 @@ current_v = tf.convert_to_tensor(cur[train:, None])
 data_v = tf.concat([voltage_v, current_v], 1)
 print('Training tensor shapes:\nLabels: {}\nData: {}\n'.format(label_t.shape, data_t.shape))
 print('Validation tensor shapes:\nLabels: {}\nData: {}\n'.format(label_v.shape, data_v.shape))
+print('________\n')
 
 train_set = tf.data.Dataset.from_tensor_slices((data_t, label_t))
 train_set = train_set.cache().shuffle(BUFFER).batch(BATCH).repeat()
