@@ -6,15 +6,15 @@ USAGE OVERVIEW
 This is a prototype program designed to utilize deep learning for diagnosis of Langmuir probe data.
 This version analyzes low-temperature magnetospheric plasma data, and utilizes data downlinked from NASA's Simulation-to-Flight 1 (STF-1) Cubesat.
 TO USE THIS PROGRAM: Please execute the main program script, network.py, from a Python IDE or the command line.
-	* The program will first prompt you with a menu to select a data file to use. These are pre-processed STF-1 data files; more data files will follow in future versions.
-	* To select a file, please enter the integer that corresponds to the desired file, and press 'Enter'.
-	* Once a file is selected, network.py will take over and conduct training. The final output of the program will be a plot of the Mean Squared Error (MSE) loss versus the number of times the data has been trained over, or epochs. The epochs can be changing by editing the EPOCHS variable in network.py.
-	* The STF-1 data will be analyzed, and stf1.py will output to the console the "uncharacteristic" electron temperaturese and ion densities calculated from that data. These are data points for which plasma parameters lie outside the limits reported in the literature to define an ionospheric plasma, and will be filtered to one extreme of this definition.
-	* As the STF-1 data is imported and the synthetic data is generated, a series of Numpy ndarray shapes and Tensorflow Tensor shapes will be output; this is for sanity checks, to ensure the network is behaving as intended.
-	* The program will attempt to load a Keras Sequential model from the 'model' folder in the local directory. If none is found or an error occurs, the network will start from scratch and construct a new network. !THIS WILL OVERWRITE ANY SIMILARLY-NAMED FILES IN THE 'model' FOLDER!
-	* Once the model is loaded/constructed and compiled, training will begin. Live updates of training progress can be seen as the epochs progrress; you will watch the network iterate over the synthetic data EVAL_INT times, and calculate MSE training and validation losses.
-	* Training will conclude, the model will be saved, and 2-D Numpy histograms of the normalized predicted label values versus normalized actual label values will be created; a plot of MSE loss versus epoch will be saved as 'loss_plot.png' to the local directory.
-	* Program execution has ended, or will end when the figure windows are closed if run from the command line.
+* The program will first prompt you with a menu to select a data file to use. These are pre-processed STF-1 data files; more data files will follow in future versions.
+* To select a file, please enter the integer that corresponds to the desired file, and press 'Enter'.
+* Once a file is selected, network.py will take over and conduct training. The final output of the program will be a plot of the Mean Squared Error (MSE) loss versus the number of times the data has been trained over, or epochs. The epochs can be changing by editing the EPOCHS variable in network.py.
+* The STF-1 data will be analyzed, and stf1.py will output to the console the "uncharacteristic" electron temperaturese and ion densities calculated from that data. These are data points for which plasma parameters lie outside the limits reported in the literature to define an ionospheric plasma, and will be filtered to one extreme of this definition.
+* As the STF-1 data is imported and the synthetic data is generated, a series of Numpy ndarray shapes and Tensorflow Tensor shapes will be output; this is for sanity checks, to ensure the network is behaving as intended.
+* The program will attempt to load a Keras Sequential model from the 'model' folder in the local directory. If none is found or an error occurs, the network will start from scratch and construct a new network. !THIS WILL OVERWRITE ANY SIMILARLY-NAMED FILES IN THE 'model' FOLDER!
+* Once the model is loaded/constructed and compiled, training will begin. Live updates of training progress can be seen as the epochs progrress; you will watch the network iterate over the synthetic data EVAL_INT times, and calculate MSE training and validation losses.
+* Training will conclude, the model will be saved, and 2-D Numpy histograms of the normalized predicted label values versus normalized actual label values will be created; a plot of MSE loss versus epoch will be saved as 'loss_plot.png' to the local directory.
+* Program execution has ended, or will end when the figure windows are closed if run from the command line.
 
 PROGRAM OVERVIEW
 ================
