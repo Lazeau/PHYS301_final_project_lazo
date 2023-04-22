@@ -9,8 +9,9 @@ Main script for program.
 # Library imports
 import numpy as np
 import tensorflow as tf
-import tensorflow.keras as k
-from tensorflow.keras import layers
+from tensorflow import _keras as k
+#import tensorflow.keras as k
+from keras import layers
 import tensorflow_docs as tfdocs
 import tensorflow_docs.modeling
 import tensorflow_docs.plots
