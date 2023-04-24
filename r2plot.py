@@ -9,8 +9,8 @@ and plot prediction results on a 2D numpy histogram.
 
 import numpy as np
 import tensorflow as tf
-import tensorflow.keras as k
-from tensorflow.keras import layers
+import keras as k
+from keras import layers
 import matplotlib.pyplot as plt
 
 def RSquared(y, y_p):
@@ -43,7 +43,7 @@ def plotResult(fig, ax, y, y_p, label, title, fontsize = 14, res = 25):
     yedges = np.linspace(0, 1, res)
     H, xedges, yedges = np.histogram2d(y, y_p, bins = [xedges, yedges])
     H = H.T  # Let each row list bins with common y range
-    ax.imshow(H, interpolation='nearest', origin='low',
+    ax.imshow(H, interpolation='nearest', origin='lower',
         extent=[xedges[0], xedges[-1], yedges[0], yedges[-1]], aspect='auto')
     
     # Calculating R-squared
